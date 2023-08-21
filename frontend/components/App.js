@@ -16,10 +16,19 @@ export default class App extends React.Component {
     todos: initialTodos
   }
 
+  toggleCompletion = id => {
+    this.setState({
+    ...this.state,
+      todos: this.state.todos.map(td => {
+        if (id == td.id) return {...td, completed: !td.completed}
+        return td
+      })
+    })
+  }
   render() {
     return (
       <div>
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} toggleCompletion={this.toggleCompletion} />
         <Form />
       </div>
     )
