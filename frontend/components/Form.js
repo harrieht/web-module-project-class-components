@@ -8,10 +8,15 @@ export default class Form extends React.Component {
   onSumbit = evt => {
     evt.preventDefault()
     this.props.addTodo(this.state.name)
+    this.setState({
+      ...this.state,
+      name: ''
+    })
   }
   onChange = evt => {
     const { value } = evt.target
     this.setState({
+      ...this.state,
       name: value
     })
   }
