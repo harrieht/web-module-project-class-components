@@ -6,17 +6,16 @@ export default class Form extends React.Component {
   }
 
   onSumbit = evt => {
-    
+    evt.preventDefault()
+    this.props.addTodo(this.state.name)
   }
-
   onChange = evt => {
-    const { value } =evt.target
+    const { value } = evt.target
     this.setState({
       name: value
     })
   }
   render() {
-    const { addTodo } = this.props
     return (
       <form onClick={this.onSumbit}>
         <input type="text" value={this.state.name} onChange={this.onChange} />
@@ -24,4 +23,4 @@ export default class Form extends React.Component {
       </form>
     )
   }
-}
+  }
